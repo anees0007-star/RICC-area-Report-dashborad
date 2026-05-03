@@ -1,0 +1,259 @@
+
+<h2 class="sr-only">Community area report dashboard showing 5 KPIs and charts from form responses submitted on May 3, 2026.</h2>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.dash { padding: 1.5rem 0; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 12px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.kpi { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+.kpi-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; line-height: 1.4; }
+.kpi-value { font-size: 26px; font-weight: 500; color: var(--color-text-primary); line-height: 1; }
+.kpi-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; }
+.badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 99px; margin-top: 4px; }
+.badge-success { background: #EAF3DE; color: #3B6D11; }
+.badge-warn { background: #FAEEDA; color: #854F0B; }
+.badge-danger { background: #FCEBEB; color: #A32D2D; }
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.5rem; }
+.chart-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+.chart-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 14px; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--color-text-secondary); margin-bottom: 10px; }
+.legend span { display: flex; align-items: center; gap: 5px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.table-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; color: var(--color-text-tertiary); font-weight: 500; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 0 8px 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+td { padding: 8px 8px 8px 0; color: var(--color-text-primary); border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+.pill { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
+.pill-yes { background: #EAF3DE; color: #3B6D11; }
+.pill-no { background: #FCEBEB; color: #A32D2D; }
+.pill-partial { background: #FAEEDA; color: #854F0B; }
+.pill-weekly { background: #E6F1FB; color: #185FA5; }
+.pill-monthly { background: #EEEDFE; color: #534AB7; }
+</style>
+
+<div class="dash">
+  <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 1.25rem;">Area activity report · May 2026 · 5 responses · 4 areas</p>
+
+  <p class="section-label">Key performance indicators</p>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Total responses</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-sub">4 unique areas</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">QHLC class held</div>
+      <div class="kpi-value">100%</div>
+      <span class="badge badge-success">3 of 3 weekly</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Avg class attendance</div>
+      <div class="kpi-value">13</div>
+      <div class="kpi-sub">Range: 5 – 25</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Executive meetings held</div>
+      <div class="kpi-value">100%</div>
+      <span class="badge badge-success">2 of 2 monthly</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Cluster meetings held</div>
+      <div class="kpi-value">0%</div>
+      <span class="badge badge-danger">0 of 2 monthly</span>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-title">QHLC class attendance by area</div>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:#378ADD;"></span>Attendees</span>
+      </div>
+      <div style="position:relative;width:100%;height:180px;">
+        <canvas id="attendChart" role="img" aria-label="Bar chart showing QHLC attendance per area: Bathah 25, Wadi Laban 5, Garnat 9">Bathah 25, Wadi Laban 5, Garnat 9.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Report type distribution</div>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:#378ADD;"></span>Weekly 60%</span>
+        <span><span class="legend-dot" style="background:#7F77DD;"></span>Monthly 40%</span>
+      </div>
+      <div style="position:relative;width:100%;height:180px;">
+        <canvas id="typeChart" role="img" aria-label="Doughnut chart: 60% weekly reports, 40% monthly reports">Weekly: 3, Monthly: 2.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-row" style="margin-bottom:1.5rem;">
+    <div class="chart-card">
+      <div class="chart-title">Monthly activity compliance (2 areas)</div>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:#1D9E75;"></span>Done</span>
+        <span><span class="legend-dot" style="background:#E24B4A;"></span>Not done</span>
+      </div>
+      <div style="position:relative;width:100%;height:200px;">
+        <canvas id="complianceChart" role="img" aria-label="Grouped bar chart showing compliance for executive meetings, cluster meetings, subscription collection, and Punyam box update">See data below in table.</canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Field dawah activity — weekly areas</div>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:#EF9F27;"></span>Conducted</span>
+        <span><span class="legend-dot" style="background:#D3D1C7;"></span>Not conducted</span>
+      </div>
+      <div style="position:relative;width:100%;height:200px;">
+        <canvas id="dawahChart" role="img" aria-label="Pie chart showing field dawah was not conducted in all 3 weekly areas">Not conducted: 3, Conducted: 0.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Detailed area breakdown</p>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Type</th>
+          <th>QHLC class</th>
+          <th>Attendance</th>
+          <th>Field dawah</th>
+          <th>Exec meeting</th>
+          <th>Cluster meeting</th>
+          <th>Subscription</th>
+          <th>Punyam box</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:500;">Bathah</td>
+          <td><span class="pill pill-weekly">Weekly</span></td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>25</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>—</td><td>—</td><td>—</td><td>—</td>
+        </tr>
+        <tr>
+          <td style="font-weight:500;">Bathah</td>
+          <td><span class="pill pill-monthly">Monthly</span></td>
+          <td>—</td><td>—</td><td>—</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td><span class="pill pill-no">No</span></td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td><span class="pill pill-no">No</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:500;">Wadi Laban</td>
+          <td><span class="pill pill-weekly">Weekly</span></td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>5</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>—</td><td>—</td><td>—</td><td>—</td>
+        </tr>
+        <tr>
+          <td style="font-weight:500;">Malas</td>
+          <td><span class="pill pill-monthly">Monthly</span></td>
+          <td>—</td><td>—</td><td>—</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td><span class="pill pill-no">No</span></td>
+          <td><span class="pill pill-partial">Partial</span></td>
+          <td><span class="pill pill-no">No</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:500;">Garnat</td>
+          <td><span class="pill pill-weekly">Weekly</span></td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>9</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>—</td><td>—</td><td>—</td><td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const textCol = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.45)';
+const gridCol = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+
+new Chart(document.getElementById('attendChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Bathah', 'Wadi Laban', 'Garnat'],
+    datasets: [{
+      label: 'Attendees',
+      data: [25, 5, 9],
+      backgroundColor: ['#378ADD','#5DCAA5','#7F77DD'],
+      borderRadius: 4,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textCol, font: { size: 11 } }, grid: { display: false }, border: { display: false } },
+      y: { ticks: { color: textCol, font: { size: 11 }, stepSize: 5 }, grid: { color: gridCol }, border: { display: false }, beginAtZero: true }
+    }
+  }
+});
+
+new Chart(document.getElementById('typeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Weekly', 'Monthly'],
+    datasets: [{
+      data: [3, 2],
+      backgroundColor: ['#378ADD','#7F77DD'],
+      borderWidth: 0,
+      hoverOffset: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '68%',
+    plugins: { legend: { display: false } }
+  }
+});
+
+new Chart(document.getElementById('complianceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Exec meeting', 'Cluster meeting', 'Subscription', 'Punyam box'],
+    datasets: [
+      { label: 'Done', data: [2, 0, 1, 0], backgroundColor: '#1D9E75', borderRadius: 4, borderSkipped: false },
+      { label: 'Not done', data: [0, 2, 1, 2], backgroundColor: '#E24B4A', borderRadius: 4, borderSkipped: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textCol, font: { size: 10 }, autoSkip: false, maxRotation: 0 }, grid: { display: false }, border: { display: false } },
+      y: { ticks: { color: textCol, font: { size: 11 }, stepSize: 1 }, grid: { color: gridCol }, border: { display: false }, beginAtZero: true, max: 3 }
+    }
+  }
+});
+
+new Chart(document.getElementById('dawahChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Not conducted', 'Conducted'],
+    datasets: [{
+      data: [3, 0],
+      backgroundColor: ['#D3D1C7','#EF9F27'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: { legend: { display: false } }
+  }
+});
+</script>
